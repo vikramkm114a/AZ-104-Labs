@@ -17,7 +17,7 @@ A new lab environment is being built for pre-production testing. Engineers need 
 
 Working inside the Default Directory tenant in Microsoft Entra ID Free.
 
-![Entra ID tenant overview](screenshots/13-entra-id-overview.png)
+![Default Directory overview](screenshots/13-default-directory-overview.png)
 
 | Detail | Value |
 |---|---|
@@ -32,9 +32,26 @@ Working inside the Default Directory tenant in Microsoft Entra ID Free.
 
 ### 1a. Created an internal user (`az104-user1`)
 
-Navigated to **Microsoft Entra ID → Users → New user → Create new user**.
+Navigated to **Microsoft Entra ID → Users → New user** and selected **Create new user** from the dropdown.
 
-![New user dropdown](screenshots/14-new-user-dropdown.png)
+![New user dropdown](screenshots/01-new-user-dropdown.png)
+
+Filled in the Basics tab with the required identity and password settings.
+
+![Create new user - Basics](screenshots/02-create-new-user-basics.png)
+
+Moved to the Properties tab and set job title, department, and usage location.
+
+![Create new user - Properties top](screenshots/03-create-new-user-properties-top.png)
+![Create new user - Properties bottom](screenshots/04-create-new-user-properties-bottom.png)
+
+Reviewed the configuration and clicked **Create**.
+
+![Create new user - Review](screenshots/05-create-new-user-review.png)
+
+Refreshed the user list to confirm `az104-user1` was successfully created.
+
+![New user confirmed in directory](screenshots/06-create-new-user-check.png)
 
 | Setting | Value |
 |---|---|
@@ -45,15 +62,26 @@ Navigated to **Microsoft Entra ID → Users → New user → Create new user**.
 | Department | IT |
 | Usage location | United States |
 
-![Create new user - Basics](screenshots/01-create-user-basics.png)
-![Create new user - Properties](screenshots/02-create-user-properties.png)
-![Create new user - Review](screenshots/03-create-user-review.png)
-
 ---
 
 ### 1b. Invited an external guest user
 
 Navigated to **New user → Invite external user** to simulate a B2B guest scenario using a secondary Gmail address.
+
+![Invite external user dropdown](screenshots/07-create-invite-external-dropdown.png)
+
+Filled in the Basics tab with the guest's email, display name, and a welcome message.
+
+![Invite external user - Basics](screenshots/08-invite-external-basics.png)
+
+Moved to the Properties tab and set job title, department, and usage location.
+
+![Invite external user - Properties top](screenshots/09-invite-external-properties-top.png)
+![Invite external user - Properties bottom](screenshots/10-invite-external-properties-bottom.png)
+
+Reviewed the configuration and clicked **Invite**.
+
+![Invite external user - Review](screenshots/11-invite-external-review.png)
 
 | Setting | Value |
 |---|---|
@@ -64,23 +92,33 @@ Navigated to **New user → Invite external user** to simulate a B2B guest scena
 | Department | IT |
 | Usage location | United States |
 
-![Invite external user - Basics](screenshots/04-invite-external-basics.png)
-![Invite external user - Properties](screenshots/05-invite-external-properties.png)
-![Invite external user - Review](screenshots/06-invite-external-review.png)
+**Result:** All users list confirms 10 users — `az104-user1` as Member and guest `Vikram Malhotra` as Guest.
 
-**Result:** Both users confirmed in the directory — `az104-user1` as Member and guest `Vikram Malhotra` as Guest (10 total users).
+![All users list](screenshots/12-all-users-list.png)
 
-![All users list](screenshots/07-all-users-list.png)
-
-> **Troubleshooting note:** My first invite attempt used the same email address already associated with my admin account. Azure treated it as an existing identity and did not create a new guest entry — no error, it just silently resolved to the existing account. Re-inviting with a different email address resolved this. Key lesson: Entra ID deduplicates identities across Microsoft accounts. You cannot invite an email address that already exists in the tenant as a new guest.
+> **Troubleshooting note:** My first invite attempt used the same email address already associated with my admin account. Azure treated it as an existing identity and did not create a new guest entry — no error, it silently resolved to the existing account. Re-inviting with a different email address resolved this. Key lesson: Entra ID deduplicates identities across Microsoft accounts. You cannot invite an email address that already exists in the tenant as a new guest.
 
 ---
 
 ## Task 2 – Create a Group and Add Members
 
-### Created the `IT Lab Administrators` security group
+Navigated to **Microsoft Entra ID → Groups** and reviewed the Groups overview dashboard before creating the new group.
 
-Navigated to **Microsoft Entra ID → Groups → New group**.
+![Groups overview dashboard](screenshots/14-group-overview.png)
+
+Clicked **New group** and filled in the group details, selecting 1 owner and 2 members before clicking **Create**.
+
+![New group creation form](screenshots/15-new-group-form.png)
+
+**Result:** `IT Lab Administrators` confirmed in the directory alongside two pre-existing groups.
+
+![All groups list](screenshots/16-all-groups.png)
+
+Clicked into the new group to verify its configuration.
+
+![IT Lab Administrators overview](screenshots/17-IT-Lab-Admin-overview.png)
+![Group members](screenshots/18-group-members.png)
+![Group owners](screenshots/19-group-owners.png)
 
 | Setting | Value |
 |---|---|
@@ -90,16 +128,7 @@ Navigated to **Microsoft Entra ID → Groups → New group**.
 | Membership type | Assigned |
 | Owner | Vikram Malhotra (admin account) |
 | Members | az104-user1 (Member), Vikram Malhotra (Guest) |
-
-![New group creation form](screenshots/08-new-group-form.png)
-
-**Result:** Group confirmed in the directory alongside two pre-existing groups.
-
-![All groups list](screenshots/09-all-groups-list.png)
-![Groups overview dashboard](screenshots/15-groups-overview-dashboard.png)
-![Group overview](screenshots/10-group-overview.png)
-![Group members](screenshots/11-group-members.png)
-![Group owners](screenshots/12-group-owners.png)
+| Total direct members | 2 |
 
 ---
 
